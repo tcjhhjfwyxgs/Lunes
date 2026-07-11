@@ -31,7 +31,7 @@
 | Secret 名称 | 必填 | 说明 | 示例 |
 |------------|------|------|------|
 | `LUNES` | ✅ | Lunes Host 账号信息 | `邮箱-----密码` |
-| `HY2_URL` | ✅ | Hysteria2 代理地址 | `hysteria2://password@server:port?sni=example.com` |
+| `NODE_LINK` | ✅ | 代理链接 | `如 vless:// vmess:// tuic:// hysteria2:// anttls:// socks5://` |
 | `TG_BOT_TOKEN` | ❌ | Telegram Bot Token | `123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11` |
 | `TG_CHAT_ID` | ❌ | Telegram Chat ID | `123456789` |
 
@@ -45,7 +45,19 @@ your-email@example.com-----your_password_123
 
 > ⚠️ 仅支持一个账号。如需多账号管理，请创建多个工作流或仓库。
 
-### 3. Telegram 通知配置（可选）
+### 3. 代理格式（确认在v2rayN里使用正常的节点）
+
+`NODE_LINK` 支持以下任意一种代理协议的完整分享链接（不配置则直连）：
+
+- **VLESS**：`vless://uuid@server:port?security=reality&sni=...&type=ws&...`
+- **VMess**：`vmess://base64encoded...`
+- **Trojan**：`trojan://password@server:port?sni=...&type=ws&...`
+- **tuic**：`tuic://uuid:password@server:port...`
+- **anytls**：`anytls://uuid@server:port...`
+- **hysteria2**：`hysteria2://base64@server:port...`
+- **SOCKS5**：`socks5://user:pass@server:port` 或 `socks://user:pass@server:port`
+
+### 4. Telegram 通知配置（可选）
 
 1. 创建 Bot：向 [@BotFather](https://t.me/BotFather) 发送 `/newbot`，获取 Token  
 2. 获取 Chat ID：向 [@userinfobot](https://t.me/userinfobot) 发消息或直接与你的 Bot 对话后访问 `https://api.telegram.org/bot<YourToken>/getUpdates`  
